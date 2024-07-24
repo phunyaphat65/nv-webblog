@@ -7,5 +7,5 @@ app.get('/status',function(reg, res ){
 let port = 8080
 
 app.listen(port, function (){
-  console.log('Hello nodejs ja'+port)
+  console.log('Hello nodejs ja' + port )
 })
