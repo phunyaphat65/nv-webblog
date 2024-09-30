@@ -1,11 +1,27 @@
-let express= require('express')
-const app = express()
-app.get('/status',function(reg, res ){
-  res.send('hello')
-})
+let express = require('express');
+// import body parser
+let bodyParser = require('body-parser');
+const cors = require('cors');
+const { sequelize } = require('./models');
+const config = require('./config/config');
 
-let port = 8080
 
-app.listen(port, function (){
-  console.log('Hello nodejs ja' + port )
+const app = express();
+// use body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+
+// import routes
+
+require('./userPassport');
+require('./routes')(app);
+
+
+let port = config.port;
+
+sequelize.sync({ force: false }).then(() => {
+    app.listen(port, function () {
+        console.log('Server running on ' + port)
+    })
 })
