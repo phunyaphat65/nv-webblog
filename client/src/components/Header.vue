@@ -27,37 +27,52 @@ export default {
 };
 </script>
 <style scoped>
+/* ปรับแถบนำทางให้เป็นธีม Netflix */
 .nv-navbar {
-  background-color: palegoldenrod;
+  background-color: #141414; /* สีดำของ Netflix */
   width: 100%;
-  height: 20px;
-  padding: 10px 0px 10px 0px;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
 .nv-navbar .nav {
   list-style: none;
   margin: 0;
   padding: 0;
-  float: left;
+  display: flex;
+  justify-content: center; /* จัดให้ลิงก์อยู่ตรงกลาง */
 }
+
 .nv-navbar .nav li {
-  float: left;
+  margin-right: 20px;
 }
+
+.nv-navbar .nav li:last-child {
+  margin-right: 0; /* ไม่มีระยะห่างทางด้านขวาสำหรับลิงก์สุดท้าย */
+}
+
 .nv-navbar .nav li a {
-  padding: 10px;
+  padding: 10px 15px;
   text-decoration: none;
-  color: gray;
+  color: #e50914; /* สีแดงของ Netflix */
   font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s, background-color 0.3s;
 }
+
 .nv-navbar .nav li a:hover {
-  padding: 10px;
-  text-decoration: none;
-  color: darkslategrey;
+  color: #fff;
+  background-color: #e50914;
+  border-radius: 5px;
 }
+
 .nv-navbar .nav li a.router-link-active {
-  background-color: gold;
-  color: darkslategrey;
+  background-color: #e50914;
+  color: #fff;
+  border-radius: 5px;
 }
+
 .clearfix {
-  clear: left;
+  clear: both;
 }
 </style>
