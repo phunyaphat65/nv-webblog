@@ -1,17 +1,19 @@
 <template>
-  <div>
+  <div class="edit-blog-container">
     <h1>Create Blog</h1>
     <form v-on:submit.prevent="createBlog">
-      <p>
-        title:
-        <input type="text" v-model="blog.title" />
-      </p>
+      <div class="form-group">
+        <label for="title">ชื่อเรื่อง:</label>
+        <input type="text" v-model="blog.title" id="title" class="form-input" />
+      </div>
+
       <transition name="fade">
         <div class="thumbnail-pic" v-if="blog.thumbnail != 'null'">
           <img :src="BASE_URL + blog.thumbnail" alt="thumbnail" />
         </div>
       </transition>
-      <form enctype="multipart/form-data" novalidate>
+
+      <div class="upload-section">
         <div class="dropbox">
           <input
             type="file"
@@ -25,55 +27,79 @@
             accept="image/*"
             class="input-file"
           />
-          <!-- <p v-if="isInitial || isSuccess"> -->
-          <p v-if="isInitial">
-            Drag your file(s) here to begin<br />
-            or click to browse
-          </p>
+          <p v-if="isInitial">Drag your file(s) here to begin<br />or click to browse</p>
           <p v-if="isSaving">Uploading {{ fileCount }} files...</p>
           <p v-if="isSuccess">Upload Successful.</p>
         </div>
-      </form>
-      <div>
-        <transition-group tag="ul" class="pictures">
-          <li v-for="picture in pictures" v-bind:key="picture.id">
-            <img
-              style="margin-bottom: 5px"
-              :src="BASE_URL + picture.name"
-              alt="picture image"
-            />
-            <br />
-            <button v-on:click.prevent="useThumbnail(picture.name)">
-              Thumbnail
-            </button>
-            <button v-on:click.prevent="delFile(picture)">Delete</button>
-          </li>
-        </transition-group>
-        <div class="clearfix"></div>
+
+        <div>
+          <transition-group tag="ul" class="pictures">
+            <li v-for="picture in pictures" v-bind:key="picture.id">
+              <img :src="BASE_URL + picture.name" alt="picture image" />
+              <div class="button-group">
+                <button v-on:click.prevent="useThumbnail(picture.name)">ใช่รูปนี้</button>
+                <button v-on:click.prevent="delFile(picture)">ลบรูป</button>
+              </div>
+            </li>
+          </transition-group>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label for="content">เรื่องย่อ:</label>
+        <vue-ckeditor
+          v-model.lazy="blog.content"
+          :config="config"
+          @blur="onBlur($event)"
+          @focus="onFocus($event)"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pictures">ความยาวภาพยนตร์:</label>
+        <input type="text" v-model="blog.pictures" id="pictures" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="category">ประเภทภาพยนตร์:</label>
+        <input type="text" v-model="blog.category" id="category" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="status">นักแสดงนำ:</label>
+        <input type="text" v-model="blog.status" id="status" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="createdAt">วันที่ออกฉาย :</label>
+        <input type="date" v-model="blog.createdAt" id="createdAt" class="form-input" />
+      </div>
+
       <p>
-        <strong>content:</strong>
-      </p>
-      <vue-ckeditor
-        v-model.lazy="blog.content"
-        :config="config"
-        @blur="onBlur($event)"
-        @focus="onFocus($event)"
-      />
-      <p>
-        category:
-        <input type="text" v-model="blog.category" />
-      </p>
-      <p>
-        status:
-        <input type="text" v-model="blog.status" />
-      </p>
-      <p>
-        <button type="submit">create blog</button>
+        <button type="submit">Create Blog</button>
       </p>
     </form>
   </div>
 </template>
+
+<script>
+// ... (script remains unchanged)
+</script>
+
+<style scoped>
+/* (existing styles remain unchanged) */
+.form-group {
+  margin-bottom: 1em; /* Adjust margin as needed */
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+
 <script>
 import BlogsService from "@/services/BlogsService";
 import VueCkeditor from "vue-ckeditor2";
@@ -86,32 +112,33 @@ const STATUS_INITIAL = 0,
 
 export default {
   data() {
-    return {
-      BASE_URL: "http://localhost:8081/assets/uploads/",
-      error: null,
-      // uploadedFiles: [],
-      uploadError: null,
-      currentStatus: null,
-      uploadFieldName: "userPhoto",
-      uploadedFileNames: [],
-      pictures: [],
-      pictureIndex: 0,
-      blog: {
-        title: "",
-        thumbnail: "null",
-        pictures: "null",
-        content: "",
-        category: "",
-        status: "saved",
-      },
-      config: {
-        toolbar: [
-          ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript"],
-        ],
-        height: 300,
-      },
-    };
-  },
+  return {
+    BASE_URL: "http://localhost:8081/assets/uploads/",
+    error: null,
+    uploadError: null,
+    currentStatus: null,
+    uploadFieldName: "userPhoto",
+    uploadedFileNames: [],
+    pictures: [],
+    pictureIndex: 0,
+    blog: {
+      title: "",
+      thumbnail: "null",
+      pictures: "null", // ความยาวภาพยนตร์
+      content: "",
+      category: "", // ประเภทภาพยนตร์
+      status: "saved", // นักแสดงนำ
+      createdAt: "", // วันที่ออกฉาย
+    },
+    config: {
+      toolbar: [
+        ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript"],
+      ],
+      height: 300,
+    },
+  };
+},
+
   methods: {
     async delFile(material) {
       let result = confirm("Want to delete?");
@@ -342,54 +369,89 @@ export default {
 };
 </script>
 <style scoped>
-.dropbox {
-  outline: 2px dashed grey; /* the dash box */
-  outline-offset: -10px;
-  background: lemonchiffon;
-  color: dimgray;
-  padding: 10px 10px;
-  min-height: 200px; /* minimum height */
-  position: relative;
-  cursor: pointer;
+.edit-blog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #141414;
+  color: white;
+  min-height: 100vh;
+  margin-top: 10px;
 }
-.input-file {
-  opacity: 0; /* invisible but it's there! */
+
+h1 {
+  color: #e50914;
+  margin-bottom: 20px;
+}
+
+.form-group {
   width: 100%;
-  height: 200px;
-  position: absolute;
-  cursor: pointer;
+  max-width: 600px;
+  margin-bottom: 20px;
 }
 
-.dropbox:hover {
-  background: khaki; /* when mouse over to the drop zone, change color 
-*/
+label {
+  color: #e50914;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  display: block;
 }
 
-.dropbox p {
-  font-size: 1.2em;
+.form-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: white;
+  margin-top: 5px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.upload-section {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.dropbox {
+  border: 2px dashed #444;
+  padding: 15px;
   text-align: center;
-  padding: 50px 0;
+  border-radius: 5px;
+  background-color: #222;
+  margin-bottom: 20px;
 }
-ul.pictures {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  float: left;
-  padding-top: 10px;
-  padding-bottom: 10px;
+
+.pictures img {
+  max-width: 100px;
+  border-radius: 5px;
+  margin: 5px;
 }
-ul.pictures li {
-  float: left;
+
+.button-group {
+  display: flex;
+  gap: 15px;
 }
-ul.pictures li img {
-  max-width: 180px;
-  margin-right: 20px;
+
+button {
+  background-color: #e50914;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
-.clearfix {
-  clear: both;
-}
-/* thumbnail */
-.thumbnail-pic img {
-  width: 200px;
+
+button:hover {
+  background-color: #f40612;
 }
 </style>
