@@ -1,6 +1,6 @@
 <template>
   <div class="edit-blog-container">
-    <h1>Create Blog</h1>
+    <h1>เพิ่มภาพยนตร์</h1>
     <form v-on:submit.prevent="createBlog">
       <div class="form-group">
         <label for="title">ชื่อเรื่อง:</label>
@@ -76,7 +76,7 @@
       </div>
 
       <p>
-        <button type="submit">Create Blog</button>
+        <button type="submit">เพิ่ม</button>
       </p>
     </form>
   </div>

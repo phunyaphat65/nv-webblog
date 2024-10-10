@@ -3,7 +3,7 @@
     <h1>Edit Movie</h1>
     <form v-on:submit.prevent="editBlog">
       <div class="form-group">
-        <label for="title">Title:</label>
+        <label for="title">ชื่อเรื่อง:</label>
         <input type="text" v-model="blog.title" id="title" class="form-input" />
       </div>
 
