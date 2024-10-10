@@ -4,76 +4,74 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
-    <script src="http://localhost:8081/assets/ckeditor462f/ckeditor.js"></script>
     <style>
-        /* พื้นหลังของหน้า */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #000000; /* เปลี่ยนเป็นสีขาวเพื่อให้ดูสว่างขึ้น */
-            color: #333; /* สีตัวอักษรเป็นสีเข้มเพื่อให้ตัดกับพื้นหลัง */
+            background-image: url('https://image.cdn2.seaart.ai/2023-12-09/clq53n94msbc73c4eaug/36c1fb98fac4c2d3ed75ef8868c9744b6a17cd5d_high.webp'); /* รูปพื้นหลัง */
+            background-size: cover; /* ทำให้ภาพครอบคลุมพื้นที่ */
+            background-position: center; /* จัดกลางภาพ */
+            color: #f5f5f5;
+            line-height: 1.6;
+            height: 100vh; /* ทำให้สูงเต็มหน้าจอ */
+            display: flex; /* ใช้ flexbox เพื่อจัดตำแหน่ง */
+            flex-direction: column; /* แนวตั้ง */
+            
         }
 
-        /* ส่วนแอปพลิเคชัน */
-        #app {
-            max-width: 1200px; /* กำหนดความกว้างสูงสุด */
-            margin: 0 auto; /* จัดกลาง */
-            padding: 20px;
-        }
-
-        /* สไตล์ของหัวข้อ */
         h1 {
-            color: #e50914; /* สีแดงของ Netflix */
-            font-size: 3rem; /* ขนาดตัวอักษร */
-            text-align: center;
-            margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+            color: #e50914;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* ปุ่ม */
         button {
-            background-color: #e50914; /* สีแดงของ Netflix */
+            background-color: #e50914;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-            display: block; /* ทำให้ปุ่มอยู่ในแถวใหม่ */
-            margin: 10px auto; /* จัดกลางปุ่ม */
-            width: 200px; /* ความกว้างของปุ่ม */
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: block;
+            margin: 10px auto;
+            width: 220px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        /* เมื่อผู้ใช้เอาเมาส์ชี้ที่ปุ่ม */
         button:hover {
-            background-color: #f40612; /* สีแดงเข้มขึ้น */
+            background-color: #f40612;
+            transform: translateY(-2px);
         }
 
-        /* จัดเรียงปุ่มให้ดี */
-        .button-container {
-            display: flex;
-            flex-direction: column; /* จัดเรียงในแนวตั้ง */
-            align-items: center; /* จัดกลาง */
-        }
-
-        /* ส่วนของฟุตเตอร์ */
         footer {
             margin-top: 50px;
             text-align: center;
             padding: 20px 0;
-            background-color: #333;
+            background-color: rgba(34, 34, 34, 0.8); /* สีฟุตเตอร์เข้มกับโปร่งใส */
             color: white;
             font-size: 0.9rem;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        a {
+            color: #e50914;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <h1>Welcome</h1>
+        <h1></h1>
         
-    <footer>
-        &copy; 
-    </footer>
+    </div>
 </body>
 </html>

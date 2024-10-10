@@ -78,14 +78,14 @@ export default {
   align-items: center; /* จัดกลางแนวตั้ง */
   justify-content: center; /* จัดกลางแนวนอน */
   padding: 20px; /* เพิ่มระยะห่างด้านใน */
-  background-color: #141414; /* สีพื้นหลังคล้าย Netflix */
+  background-color: #141414a5; 
   color: white; /* สีตัวอักษร */
   min-height: 100vh; /* ความสูงเต็มหน้าจอ */
   margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
 }
 
 h1 {
-  color: #e50914; /* สีแดงของ Netflix */
+  color: #e50914; 
   margin-bottom: 20px; /* ระยะห่างด้านล่าง */
 }
 
@@ -98,7 +98,7 @@ h1 {
 }
 
 .action-button {
-  background-color: #e50914; /* สีแดงของ Netflix */
+  background-color: #e50914; 
   color: white;
   padding: 10px 15px;
   border: none;

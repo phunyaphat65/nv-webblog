@@ -47,13 +47,13 @@ export default {
   align-items: center; /* จัดกลางแนวตั้ง */
   justify-content: center; /* จัดกลางแนวนอน */
   height: 100vh; /* ความสูงเต็มหน้าจอ */
-  background-color: #141414; /* สีพื้นหลังคล้าย Netflix */
+  background-color: #141414; 
   color: white; /* สีตัวอักษร */
   margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
 }
 
 h1 {
-  color: #e50914; /* สีแดงของ Netflix */
+  color: #e50914; 
   margin-bottom: 20px; /* ระยะห่างด้านล่าง */
 }
 
@@ -89,7 +89,7 @@ input:focus {
 }
 
 .login-button {
-  background-color: #e50914; /* สีแดงของ Netflix */
+  background-color: #e50914;
   color: white;
   padding: 10px;
   border: none;

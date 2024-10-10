@@ -119,7 +119,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #141414;
+    background-color: #141414a5;
     color: white;
     min-height: 100vh;
     margin-top: 10px;
@@ -145,7 +145,7 @@
     font-size: 16px;
     background-color: #222;
     color: white;
-    transition: all 0.2s ease; /* ลดเวลาตอบสนองของการเปลี่ยน */
+    transition: all 0.2s ease; 
   }
   
   .search-input:focus {
@@ -163,7 +163,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
-    transition: background-color 0.2s ease; /* ลดเวลาตอบสนองของปุ่ม */
+    transition: background-color 0.2s ease; 
   }
   
   .action-button:hover,
@@ -180,12 +180,12 @@
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 15px;
-    transition: transform 0.2s ease; /* เพิ่มเอฟเฟกต์เมื่อโฮเวอร์ */
+    transition: transform 0.2s ease; 
     width: 800px;
   }
   
   .blog-card:hover {
-    transform: scale(1.02); /* ขยายขณะโฮเวอร์ */
+    transform: scale(1.02); 
   }
   
   .thumbnail-pic img {
@@ -219,7 +219,7 @@
   
   .categories li a {
     padding: 5px 10px;
-    background: #e50914; /* เปลี่ยนสีปุ่มเป็นสี Netflix */
+    background: #e50914;
     color: white;
     border-radius: 5px;
     transition: background-color 0.2s ease;

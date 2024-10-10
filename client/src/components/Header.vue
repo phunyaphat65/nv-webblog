@@ -26,9 +26,9 @@ export default {
 };
 </script>
 <style scoped>
-/* ปรับแถบนำทางให้เป็นธีม Netflix */
+
 .nv-navbar {
-  background-color: #141414; /* สีดำของ Netflix */
+  background-color: #141414a5; 
   width: 100%;
   padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -53,7 +53,7 @@ export default {
 .nv-navbar .nav li a {
   padding: 10px 15px;
   text-decoration: none;
-  color: #e50914; /* สีแดงของ Netflix */
+  color: #e50914; 
   font-weight: bold;
   font-size: 1.1rem;
   transition: color 0.3s, background-color 0.3s;

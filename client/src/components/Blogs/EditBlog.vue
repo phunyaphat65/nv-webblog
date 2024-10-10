@@ -173,7 +173,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #141414;
+  background-color: #141414a5;
   color: white;
   min-height: 100vh;
   margin-top: 10px;
