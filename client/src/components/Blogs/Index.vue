@@ -40,7 +40,7 @@
         </div>
       </transition-group>
   
-      <p><button class="action-button" @click="logout">Logout</button></p>
+      
     </div>
   </template>
   
